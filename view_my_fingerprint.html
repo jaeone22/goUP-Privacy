@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>goUP Privacy | View my Fingerprint</title>
+        <link rel="stylesheet" href="styles.css">
+
+        <link rel="shortcut icon" href="/favicon/favicon.ico">
+        <link rel="icon" href="/favicon/favicon.ico">
+
+        <meta name='description' content="
+            The browser has a unique fingerprint like a person's fingerprint<br>
+            Using this, the website can specify users<br>
+            This tool shows the finger prints of the browser in use<br>
+            To prevent finger print tracking, use an extension like Canversblocker or use a Tor browser">
+
+        <style>
+
+        </style>
+    </head>
+
+        <body>
+        <iframe src="/lang.html" style="border: none; width: 100%; height: 20px;"></iframe>
+
+        <header>
+            <nav>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul id="menu">
+                <li><a href="https://goup.im">goUP</a></li>
+                <select_items><li><a href="index.html">goUP Privacy</a></li></select_items>
+                <li><a href="https://url.goup.im">goUP URL</a></li>
+                <li><a href="https://ai.goup.im">goUP AI</a></li>
+                <li><a href="https://id.goup.im">goUP ID</a></li>
+            </ul>
+            </nav>
+        </header>
+        
+        <script src="/menubar.js"></script>
+
+        <div class="top_title_con">
+            <div class="title_con">
+            <div class="title_box">
+                <span class="big-n-text">View my </span>
+                <span class="big-b-text">Fingerprint</span>
+                <p class="mini-n-text">
+                    The browser has a unique fingerprint like a person's fingerprint<br>
+                    Using this, the website can specify users<br>
+                    This tool shows the finger prints of the browser in use<br>
+                    To prevent finger print tracking, use an extension like Canversblocker or use a Tor browser</p>
+            </div>
+            </div>
+        </div>
+
+        <div class="title_con">
+            <div class="title_box">
+            <span class="mid-b-text">IP Address</span>
+                <p class="mini-n-text">The website allows you to track approximate user locations with IP addresses<br>
+                    To block the IP address tracking, use a reliable VPN</p>
+
+                <p class="mini-b-text" id="ipAddress">Loading...</p>
+            </div>
+            </div>
+        </div>
+
+        <div class="title_con">
+            <div class="title_box">
+            <span class="mid-b-text">User Agent</span>
+                <p class="mini-n-text">The user agent delivers information such as the operating system and browser version in use to the website<br>
+                    This information is the most easy finger print element.</p>
+
+                <p class="mini-b-text" id="userAgent">Loading...</p>
+            </div>
+            </div>
+        </div>
+
+        <div class="title_con">
+            <div class="title_box">
+            <span class="mid-b-text">Screen resolution</span>
+                <p class="mini-n-text">Browser window size and monitor window size can be used to track<br>
+                    The more you use the unusual monitor ratio or window size, the more uniquely you use.</p>
+
+                <p class="mini-b-text" id="screenResolution">Loading...</p>
+            </div>
+            </div>
+        </div>
+
+        <div class="title_con">
+            <div class="title_box">
+            <span class="mid-b-text">Time Zone</span>
+                <p class="mini-n-text">Get the UTC time zone information<br>
+                    This shows you what the user actually lives in.</p>
+
+                <p class="mini-b-text" id="timeZone">Loading...</p>
+            </div>
+            </div>
+        </div>
+
+        <div class="title_con">
+            <div class="title_box">
+            <span class="mid-b-text">Browser Language</span>
+                <p class="mini-n-text">Import the website display language set in the browser<br>
+                    This allows the website to be provided in a suitable language for users, but it is also used to check the country where users are living.</p>
+
+                <p class="mini-b-text" id="browserLanguage">Loading...</p>
+            </div>
+            </div>
+        </div>
+
+        <div class="title_con">
+            <div class="title_box">
+            <span class="mid-b-text">Installed Plugins</span>
+                <p class="mini-n-text">Most browsers are equipped with plugins by default<br>
+                    Openh264 or Widevine content decryption module is a typical example
+                    * This is different from browser addon</p>
+
+                <p class="mini-b-text" id="installedPlugins">Loading...</p>
+            </div>
+            </div>
+        </div>
+
+        <div class="title_con">
+            <div class="title_box">
+            <span class="mid-b-text">HTML Canvers</span>
+                <p class="mini-n-text">Using the canvas image creation function, the website can draw the same image as the QR code<br>
+                    However, this can be used to definitely track users because the results vary slightly depending on the environment and graphics cards you are using</p>
+
+                <p class="mini-b-text" id="htmlCanvers">Loading...</p>
+                <img id="canvasImage" style="display:none;" />
+            </div>
+            </div>
+        </div>
+
+        <div class="title_con">
+            <div class="title_box">
+            <span class="mid-b-text">WebGL API</span>
+                <p class="mini-n-text">WebGL helps 2D or 3D rendering to be quick with graphics cards, but it also transmits user graphics card information and system information.</p>
+
+                <p class="mini-b-text" id="webGLAPI">Loading...</p>
+            </div>
+            </div>
+        </div>
+
+        <!--푸터-->
+        <script>var xhr = new XMLHttpRequest();xhr.open('GET', 'footer', true);xhr.onreadystatechange = function () 
+        {if (xhr.readyState == 4 && xhr.status == 200) {document.getElementById('footerContainer').innerHTML = xhr.responseText;}};xhr.send();</script>
+
+        <script>
+            async function generateSHA256(data) {
+                const encoder = new TextEncoder();
+                const dataBuffer = encoder.encode(data);
+                const hashBuffer = await crypto.subtle.digest('SHA-256', dataBuffer);
+                const hashArray = Array.from(new Uint8Array(hashBuffer));
+                const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+                return hashHex;
+            }
+
+            document.addEventListener("DOMContentLoaded", async function() {
+                // IP Address
+                fetch('https://api.ipify.org?format=json') // 실제 IP 주소를 가져오는 API
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('ipAddress').innerText = data.ip;
+                    })
+                    .catch(error => {
+                        document.getElementById('ipAddress').innerText = 'Unable to retrieve IP'; 
+                    });
+
+                // User Agent
+                document.getElementById('userAgent').innerText = navigator.userAgent;
+
+                // Screen Resolution
+                document.getElementById('screenResolution').innerText = `${window.screen.width} x ${window.screen.height}`; 
+
+                // Time Zone
+                document.getElementById('timeZone').innerText = Intl.DateTimeFormat().resolvedOptions().timeZone; 
+
+                // Browser Language
+                document.getElementById('browserLanguage').innerText = navigator.language;
+
+                // Installed Plugins
+                const plugins = Array.from(navigator.plugins).map(plugin => plugin.name).join(', ');
+                document.getElementById('installedPlugins').innerText = plugins || 'No plugins installed';
+
+                // HTML Canvas
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = 300;
+                canvas.height = 60;
+
+                // 고정된 배경색
+                ctx.fillStyle = 'rgba(200, 200, 255, 0.5)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // 고정된 도형 그리기
+                ctx.fillStyle = 'rgba(45, 248, 93, 1)';
+                ctx.beginPath();
+                ctx.arc(150, 30, 20, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.fillStyle = 'rgba(45, 0, 92, 1)';
+                ctx.beginPath();
+                ctx.arc(180, 30, 30, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.fillStyle = 'rgba(255, 248, 0, 1)';
+                ctx.beginPath();
+                ctx.arc(230, 30, 20, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+                ctx.beginPath();
+                ctx.arc(300, 30, 50, 0, Math.PI * 2);
+                ctx.fill();
+
+                // 선 그리기
+                ctx.strokeStyle = 'rgba(23, 0, 0, 1)';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(125, 35);
+                ctx.lineTo(275, 10);
+                ctx.stroke(); 
+
+                ctx.strokeStyle = 'rgba(0, 87, 0, 1)';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(125, 45);
+                ctx.lineTo(275, 20);
+                ctx.stroke(); 
+
+                ctx.strokeStyle = 'rgba(0, 0, 178, 1)';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(125, 55);
+                ctx.lineTo(275, 30);
+                ctx.stroke(); 
+
+                // 텍스트 추가
+                ctx.fillStyle = 'gray'; 
+                ctx.font = '24px Arial'; 
+                ctx.fillText('TEST', 20, 40); 
+
+                ctx.fillStyle = 'black'; 
+                ctx.font = '16px Arial'; 
+                ctx.fillText('goUP Privacy', 20, 30); 
+
+                ctx.fillStyle = 'black'; 
+                ctx.font = '12px Arial'; 
+                ctx.fillText('privacy.goup.im', 20, 45);
+
+                // 캔버스 이미지를 해시로 변환
+                const dataUrl = canvas.toDataURL('image/png');
+                const hash = await generateSHA256(dataUrl); 
+                document.getElementById('htmlCanvers').innerText = hash; 
+                document.getElementById('canvasImage').src = dataUrl;
+                document.getElementById('canvasImage').style.display = 'block';
+
+                // WebGL API
+                const webGLCanvas = document.createElement('canvas');
+                const webGLContext = webGLCanvas.getContext('webgl') || webGLCanvas.getContext('experimental-webgl');
+                if (webGLContext) {
+                    const debugInfo = webGLContext.getExtension('WEBGL_debug_renderer_info');
+                    if (debugInfo) {
+                        const vendor = webGLContext.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
+                        const renderer = webGLContext.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+                        document.getElementById('webGLAPI').innerText = `Vendor: ${vendor}, Renderer: ${renderer}`;
+                    } else {
+                        document.getElementById('webGLAPI').innerText = 'Debug info not available';
+                    }
+                } else {
+                    document.getElementById('webGLAPI').innerText = 'WebGL is not supported'; 
+                }
+            });
+        </script>
+    </body>
+</html>

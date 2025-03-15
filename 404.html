@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>goUP Privacy | 404</title>
+  <link rel="stylesheet" href="/styles.css">
+
+  <link rel="shortcut icon" href="/favicon/favicon.ico">
+  <link rel="icon" href="/favicon/favicon.ico">
+
+  <meta name='description' content='goUP | 404'>
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <div class="hamburger" onclick="toggleMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <ul id="menu">
+        <li><a href="https://goup.im">goUP</a></li>
+        <select_items><li><a href="https://privacy.goup.im">goUP Privacy</a></li></select_items>
+        <li><a href="https://url.goup.im">goUP URL</a></li>
+        <li><a href="https://ai.goup.im">goUP AI</a></li>
+        <li><a href="https://id.goup.im">goUP ID</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <script src="/menubar.js"></script>
+
+  <div class="top_title_con">
+    <div class="title_con">
+      <div class="title_box">
+        <span class="big-b-text">404 Not found</span>
+        <p class="mini-n-text">The page you are accessing cannot be found</p>
+        <a href="index.html" class="download_bt">Go to Home</a>
+      </div>
+    </div>
+  </div>
+
+  <!--푸터-->
+  <div id="footerContainer"></div>
+  <script>
+      // XMLHttpRequest를 사용하여 footer 파일의 내용을 가져오기
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'footer', true);
+      xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+              // 가져온 내용을 푸터 컨테이너에 넣기
+              document.getElementById('footerContainer').innerHTML = xhr.responseText;
+          }
+      };
+      xhr.send();
+  </script>
+
+</body>
+</html>

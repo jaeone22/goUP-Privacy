@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>goUP Privacy | Home</title>
+  <link rel="stylesheet" href="/styles.css">
+
+  <link rel="shortcut icon" href="/favicon/favicon.ico">
+  <link rel="icon" href="/favicon/favicon.ico">
+
+  <meta name='description' content='Open Source Free Tools for Protection of Personal Information'>
+</head>
+
+<body>
+  <iframe src="/lang.html" style="border: none; width: 100%; height: 20px;"></iframe>
+
+  <header>
+    <nav>
+      <div class="hamburger" onclick="toggleMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <ul id="menu">
+        <li><a href="https://goup.im">goUP</a></li>
+        <select_items><li><a href="index.html">goUP Privacy</a></li></select_items>
+        <li><a href="https://url.goup.im">goUP URL</a></li>
+        <li><a href="https://ai.goup.im">goUP AI</a></li>
+        <li><a href="https://id.goup.im">goUP ID</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <script src="/menubar.js"></script>
+
+  <div class="top_title_con">
+    <div class="title_con">
+      <div class="title_box">
+        <span class="big-n-text">goUP </span>
+        <span class="big-b-text">Privacy</span>
+        <p class="mini-n-text">Check out what tools are available</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="title_con">
+    <div class="title_box">
+      <span class="mid-b-text">Password Generator</span>
+        <p class="mini-n-text">
+          Usually difficult passwords are saved to password managers<br>
+          But you have to memorize some passwords like 1Password Master Key.<br>
+          This tool helps you create a difficult and memorized password</p>
+        <a href="password_generator.html" class="download_bt_mini">Open this tool</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="title_con">
+    <div class="title_box">
+      <span class="mid-b-text">View My Fingerprint</span>
+        <p class="mini-n-text">
+          The browser has a unique fingerprint like a person's fingerprint<br>
+          Using this, the website can specify users<br>
+          This tool shows the finger prints of the browser in use<br>
+          To prevent finger print tracking, use an extension like Canversblocker or use a Tor browser</p>
+        <a href="view_my_fingerprint.html" class="download_bt_mini">Open this tool</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="title_con">
+    <div class="title_box">
+      <span class="mid-b-text">Easy Text Encryption</span>
+        <p class="mini-n-text">
+          Before sharing text containing confidentiality online, you can encrypt text using this tool<br>
+          To decrypt the text, you need a key to the encryption key set by the person sent by the person</p>
+        <a href="easy_text_encryption.html" class="download_bt_mini">Open this tool</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="title_con">
+    <div class="title_box">
+      <span class="mid-b-text">That's Not My Profile!</span>
+        <p class="mini-n-text">
+          Create and use a temporary profile for a service that seems to leak my personal information or wants to store my real information<br>
+          This tool is create a temporary alternative name and nickname, age, profile picture</p>
+        <a href="thats_not_my_profile.html" class="download_bt_mini">Open this tool</a>
+      </div>
+    </div>
+  </div>
+
+  <!--푸터-->
+  <script>var xhr = new XMLHttpRequest();xhr.open('GET', 'footer', true);xhr.onreadystatechange = function () 
+  {if (xhr.readyState == 4 && xhr.status == 200) {document.getElementById('footerContainer').innerHTML = xhr.responseText;}};xhr.send();</script>
+</body>
+</html>

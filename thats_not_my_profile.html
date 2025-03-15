@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>goUP Privacy | That's Not My Profile!</title>
+        <link rel="stylesheet" href="styles.css">
+
+        <link rel="shortcut icon" href="/favicon/favicon.ico">
+        <link rel="icon" href="/favicon/favicon.ico">
+
+        <meta name='description' content='
+            Create and use a temporary profile for a service that seems to leak my personal information or wants to store my real information<br>
+            This tool is create a temporary alternative name and nickname, age, profile picture'>
+
+        <style>
+            .name {
+                color: lightblue;
+            }
+            .nikname {
+                color: lightgreen
+            }
+            .age {
+                color: lightpink;
+            }
+            .highlight {
+                background-color: rgb(100, 100, 100);
+            }
+        </style>
+    </head>
+
+    <body>
+        <iframe src="/lang.html" style="border: none; width: 100%; height: 20px;"></iframe>
+
+        <header>
+            <nav>
+                <div class="hamburger" onclick="toggleMenu()">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <ul id="menu">
+                    <li><a href="https://goup.im">goUP</a></li>
+                    <select_items><li><a href="index.html">goUP Privacy</a></li></select_items>
+                    <li><a href="https://url.goup.im">goUP URL</a></li>
+                    <li><a href="https://ai.goup.im">goUP AI</a></li>
+                    <li><a href="https://id.goup.im">goUP ID</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <script src="/menubar.js"></script>
+
+        <div class="top_title_con">
+            <div class="title_con">
+                <div class="title_box">
+                    <span class="big-n-text">That's Not </span>
+                    <span class="big-b-text">My Profile!</span>
+                    <p class="mini-n-text">
+                        Create and use a temporary profile for a service that seems to leak my personal information or wants to store my real information<br>
+                        This tool is create a temporary alternative name, age, profile picture
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="title_con">
+            <div class="title_box">
+                <span class="mid-b-text">Profile Creation</span>
+                <p class="mini-n-text">Enter the text and encryption key and press the encryption button</p>
+                <button class="download_bt" onclick="generateProfile()">Creation</button>
+            </div>
+        </div>
+
+        <div class="title_con">
+            <div class="title_box">
+                <span class="mid-b-text">Created Profiles</span>
+                <p class="mini-n-text">Below are all generated profiles</p>
+                <div id="output" class="mini-n-text"></div>
+            </div>
+        </div>
+
+        <!--푸터-->
+        <script>var xhr = new XMLHttpRequest();xhr.open('GET', 'footer', true);xhr.onreadystatechange = function () 
+        {if (xhr.readyState == 4 && xhr.status == 200) {document.getElementById('footerContainer').innerHTML = xhr.responseText;}};xhr.send();</script>
+        
+        <script>
+            const firstNames = ["John", "Emily", "Michael", "Sarah", "Jessica", "David", "Sophia", "Daniel"];
+            const lastNames = ["Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson"];
+
+            function generateProfile() {
+                const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+                const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+                const randomAge = Math.floor(Math.random() * (61 - 20)) + 20; // 20부터 60까지의 랜덤 나이
+                
+                // 결과를 추가
+                const outputElement = document.getElementById('output');
+                const newProfile = document.createElement('div');
+                newProfile.classList.add('profile'); // 프로필 클래스 추가
+                newProfile.innerHTML = `
+                    Name: <span class="name">${randomLastName} ${randomFirstName}</span>, 
+                    Age: <span class="age">${randomAge}</span>
+                `;
+                
+                // 하이라이트 기능 추가
+                newProfile.addEventListener('mouseover', () => {
+                    newProfile.classList.add('highlight');
+                });
+                newProfile.addEventListener('mouseout', () => {
+                    newProfile.classList.remove('highlight');
+                });
+
+                outputElement.appendChild(newProfile); // 기존 프로필 아래에 추가
+            }
+        </script>
+    </body>
+</html>
